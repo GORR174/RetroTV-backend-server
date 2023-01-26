@@ -1,0 +1,30 @@
+spring.application.name: RetroTV
+
+logging:
+  file:
+    name: RetroTV-backend.log
+  logback:
+    rollingpolicy:
+      max-history: 5
+      max-file-size: 10MB
+
+retrorv:
+  auth:
+    login: ${RETROTV_ADMIN_LOGIN:admin}
+    password: ${RETROTV_ADMIN_PASSWORD:admin}
+
+server:
+  port: 8106
+  servlet:
+    context-path: /api
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:sqlite:retrotv.db
+  jpa:
+    properties:
+      hibernate.dialect: org.sqlite.hibernate.dialect.SQLiteDialect
+    hibernate.ddl-auto: update
